@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Autosecure by Maous Lucifer</title>
@@ -15,52 +13,141 @@
     }
 
     body {
-      background: radial-gradient(circle at top left, #0a0a0a, #000000);
+      background: radial-gradient(circle at top left, #0a0a0a, #000);
       color: #fff;
-      min-height: 100vh;
+      height: 100vh;
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Navbar */
+    .floating-nav {
+      background: rgba(20, 10, 30, 0.6);
+      backdrop-filter: blur(14px);
+      padding: 0.8rem 2rem;
+      border-radius: 1.5rem;
+      display: flex;
       justify-content: center;
       align-items: center;
+      gap: 1.8rem;
+      margin-top: 2rem;
+      box-shadow: 0 4px 20px rgba(255, 0, 50, 0.1);
+      border: 1px solid rgba(255, 60, 100, 0.1);
+      animation: fadeIn 1.2s ease;
+      z-index: 10;
+    }
+
+    .nav-link {
+      color: #c5b0b8;
+      text-decoration: none;
+      font-weight: 400;
+      transition: all 0.2s ease-in-out;
+      padding: 0.5rem 1rem;
+      border-radius: 0.75rem;
+    }
+
+    .nav-link:hover {
+      color: #fff;
+      background: rgba(255, 40, 80, 0.1);
+    }
+
+    .nav-link.active {
+      background: linear-gradient(90deg, #ff1e56, #ff5577);
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 0 10px rgba(255, 50, 80, 0.5);
+    }
+
+    /* Center content */
+    .center-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
       text-align: center;
+      position: relative;
+      z-index: 5;
+      padding-top: 20vh; /* Đẩy cao lên một chút */
     }
 
     h1 {
       font-size: 3rem;
-      font-weight: 500; /* thon hơn */
+      font-weight: 400;
       letter-spacing: 1px;
-      line-height: 1.2;
+      animation: floatText 6s ease-in-out infinite alternate;
     }
 
-    .autosecure {
-      color: #fff;
+    @keyframes floatText {
+      from { transform: translateY(0); }
+      to { transform: translateY(-10px); }
     }
 
+    .autosecure { color: #fff; }
     .maous {
-      background: linear-gradient(90deg, #ff0044, #ff5577);
+      background: linear-gradient(90deg, #ff3344, #ff6677, #ff3344);
       -webkit-background-clip: text;
       color: transparent;
-      animation: glow 4s ease-in-out infinite alternate;
+      animation: glow 5s ease-in-out infinite alternate;
     }
 
     @keyframes glow {
       from {
-        text-shadow: 0 0 10px rgba(255, 0, 70, 0.4),
-                     0 0 20px rgba(255, 50, 90, 0.2);
+        text-shadow: 0 0 10px rgba(255, 50, 80, 0.5),
+                     0 0 20px rgba(255, 70, 100, 0.2);
       }
       to {
-        text-shadow: 0 0 25px rgba(255, 0, 100, 0.6),
-                     0 0 40px rgba(255, 60, 100, 0.3);
+        text-shadow: 0 0 30px rgba(255, 80, 100, 0.7),
+                     0 0 50px rgba(255, 50, 70, 0.4);
       }
     }
 
     p {
-      color: #aaa;
+      color: #bbb;
       font-size: 1rem;
-      margin-top: 0.75rem;
+      margin-top: 1rem;
       opacity: 0.9;
-      letter-spacing: 0.5px;
+      animation: fadeIn 2s ease-in forwards;
+    }
+
+    /* Button group */
+    .btn-group {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1.2rem;
+    }
+
+    .btn {
+      padding: 0.7rem 1.6rem;
+      border-radius: 1rem;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      color: #fff;
+    }
+
+    .btn.primary {
+      background: linear-gradient(90deg, #ff1e56, #ff5577);
+      box-shadow: 0 0 12px rgba(255, 60, 90, 0.4);
+    }
+
+    .btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(255, 70, 100, 0.6);
+    }
+
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn.secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
     }
 
     footer {
@@ -68,85 +155,122 @@
       bottom: 20px;
       font-size: 0.9rem;
       color: #666;
+      z-index: 5;
     }
 
-    /* Floating blur lights */
+    /* Lights & Particles */
     .light {
       position: absolute;
       border-radius: 50%;
-      filter: blur(120px);
-      opacity: 0.2;
-      animation: float 10s ease-in-out infinite alternate;
-      z-index: -1;
+      filter: blur(160px);
+      opacity: 0.18;
+      z-index: -2;
+      animation: floatLight 10s ease-in-out infinite alternate;
     }
 
     .light.red {
-      background: #ff0044;
-      width: 400px;
-      height: 400px;
-      top: -100px;
+      background: #ff0033;
+      width: 420px;
+      height: 420px;
+      top: -80px;
       left: -100px;
     }
 
-    .light.purple {
-      background: #ff5577;
+    .light.dark {
+      background: #550011;
       width: 500px;
       height: 500px;
-      bottom: -120px;
-      right: -150px;
+      bottom: -100px;
+      right: -120px;
       animation-delay: 3s;
     }
 
-    @keyframes float {
-      from {
-        transform: translateY(0) translateX(0);
-      }
-      to {
-        transform: translateY(-40px) translateX(20px);
-      }
+    @keyframes floatLight {
+      from { transform: translateY(0) translateX(0); }
+      to { transform: translateY(-40px) translateX(30px); }
     }
 
-    /* Floating subtle particles */
+    .bg-particles, .aura {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+
     .particle {
       position: absolute;
-      width: 3px;
-      height: 3px;
-      background: rgba(255, 60, 90, 0.6);
       border-radius: 50%;
+      background: rgba(255, 80, 100, 0.6);
       animation: drift 10s linear infinite;
-      z-index: -1;
+      filter: blur(0.5px);
     }
 
     @keyframes drift {
       from { transform: translateY(0); opacity: 1; }
       to { transform: translateY(-120vh); opacity: 0; }
     }
+
+    .aura {
+      background: radial-gradient(circle at 50% 40%, rgba(255, 0, 40, 0.08), transparent 70%);
+      mix-blend-mode: lighten;
+      animation: pulse 6s ease-in-out infinite alternate;
+      z-index: -3;
+    }
+
+    @keyframes pulse {
+      from { opacity: 0.05; transform: scale(1); }
+      to { opacity: 0.12; transform: scale(1.05); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
   <div class="light red"></div>
-  <div class="light purple"></div>
+  <div class="light dark"></div>
+  <div class="aura"></div>
+  <div class="bg-particles" id="particles"><div class="particle" style="left: 27.9416vw; top: 89.1007vh; animation-duration: 8.0896s; opacity: 0.367338; height: 4.45496px; width: 4.45496px;"></div><div class="particle" style="left: 59.755vw; top: 10.0943vh; animation-duration: 8.01236s; opacity: 0.509058; height: 2.80049px; width: 2.80049px;"></div><div class="particle" style="left: 50.8324vw; top: 63.3686vh; animation-duration: 9.90539s; opacity: 0.569862; height: 3.17644px; width: 3.17644px;"></div><div class="particle" style="left: 55.1618vw; top: 72.3308vh; animation-duration: 6.60731s; opacity: 0.373242; height: 2.83479px; width: 2.83479px;"></div><div class="particle" style="left: 13.3352vw; top: 84.683vh; animation-duration: 9.09838s; opacity: 0.668805; height: 5.94529px; width: 5.94529px;"></div><div class="particle" style="left: 2.33665vw; top: 90.8434vh; animation-duration: 8.54628s; opacity: 0.412721; height: 3.77727px; width: 3.77727px;"></div><div class="particle" style="left: 34.9912vw; top: 89.3358vh; animation-duration: 8.9343s; opacity: 0.319153; height: 5.27817px; width: 5.27817px;"></div><div class="particle" style="left: 0.304817vw; top: 4.54938vh; animation-duration: 9.49495s; opacity: 0.224594; height: 5.25953px; width: 5.25953px;"></div><div class="particle" style="left: 42.7894vw; top: 53.097vh; animation-duration: 6.31886s; opacity: 0.590061; height: 3.16789px; width: 3.16789px;"></div><div class="particle" style="left: 25.351vw; top: 25.2391vh; animation-duration: 9.34296s; opacity: 0.695684; height: 3.90316px; width: 3.90316px;"></div><div class="particle" style="left: 14.518vw; top: 67.76vh; animation-duration: 7.86682s; opacity: 0.316181; height: 3.00241px; width: 3.00241px;"></div><div class="particle" style="left: 2.47295vw; top: 47.1714vh; animation-duration: 8.65029s; opacity: 0.599077; height: 4.37227px; width: 4.37227px;"></div><div class="particle" style="left: 20.5175vw; top: 21.1293vh; animation-duration: 6.95541s; opacity: 0.216582; height: 3.45144px; width: 3.45144px;"></div><div class="particle" style="left: 8.28618vw; top: 25.1119vh; animation-duration: 7.8414s; opacity: 0.492134; height: 4.24102px; width: 4.24102px;"></div><div class="particle" style="left: 71.3476vw; top: 4.07361vh; animation-duration: 9.06649s; opacity: 0.395962; height: 4.51151px; width: 4.51151px;"></div><div class="particle" style="left: 88.984vw; top: 27.408vh; animation-duration: 8.70438s; opacity: 0.443676; height: 5.89978px; width: 5.89978px;"></div><div class="particle" style="left: 6.92672vw; top: 45.9801vh; animation-duration: 6.56084s; opacity: 0.574962; height: 3.88486px; width: 3.88486px;"></div><div class="particle" style="left: 4.71064vw; top: 86.8342vh; animation-duration: 6.575s; opacity: 0.41429; height: 5.08934px; width: 5.08934px;"></div><div class="particle" style="left: 92.2752vw; top: 24.9351vh; animation-duration: 7.59719s; opacity: 0.294349; height: 2.34533px; width: 2.34533px;"></div><div class="particle" style="left: 48.4601vw; top: 68.3128vh; animation-duration: 9.23435s; opacity: 0.456182; height: 4.21707px; width: 4.21707px;"></div><div class="particle" style="left: 26.2671vw; top: 42.6262vh; animation-duration: 9.38833s; opacity: 0.50277; height: 3.3079px; width: 3.3079px;"></div><div class="particle" style="left: 58.2548vw; top: 84.4321vh; animation-duration: 10.4325s; opacity: 0.375801; height: 3.25976px; width: 3.25976px;"></div><div class="particle" style="left: 10.864vw; top: 31.2744vh; animation-duration: 8.12434s; opacity: 0.270552; height: 3.93873px; width: 3.93873px;"></div><div class="particle" style="left: 34.3886vw; top: 84.8305vh; animation-duration: 11.522s; opacity: 0.640842; height: 2.91425px; width: 2.91425px;"></div><div class="particle" style="left: 46.1955vw; top: 86.2773vh; animation-duration: 7.3122s; opacity: 0.486527; height: 2.86551px; width: 2.86551px;"></div><div class="particle" style="left: 51.407vw; top: 79.3959vh; animation-duration: 11.2682s; opacity: 0.698223; height: 2.75637px; width: 2.75637px;"></div><div class="particle" style="left: 15.5078vw; top: 47.3896vh; animation-duration: 7.12407s; opacity: 0.544135; height: 5.36849px; width: 5.36849px;"></div><div class="particle" style="left: 92.9052vw; top: 23.7715vh; animation-duration: 7.995s; opacity: 0.222771; height: 5.73744px; width: 5.73744px;"></div><div class="particle" style="left: 84.3257vw; top: 54.3792vh; animation-duration: 11.7058s; opacity: 0.370922; height: 2.91351px; width: 2.91351px;"></div><div class="particle" style="left: 87.1747vw; top: 41.0239vh; animation-duration: 6.67367s; opacity: 0.677443; height: 4.5257px; width: 4.5257px;"></div><div class="particle" style="left: 81.666vw; top: 87.9303vh; animation-duration: 6.24161s; opacity: 0.46874; height: 5.60851px; width: 5.60851px;"></div><div class="particle" style="left: 33.3769vw; top: 87.9618vh; animation-duration: 6.56016s; opacity: 0.552582; height: 4.58984px; width: 4.58984px;"></div><div class="particle" style="left: 16.4179vw; top: 85.5637vh; animation-duration: 8.94111s; opacity: 0.453425; height: 2.61498px; width: 2.61498px;"></div><div class="particle" style="left: 72.3611vw; top: 69.5259vh; animation-duration: 11.647s; opacity: 0.418811; height: 5.56446px; width: 5.56446px;"></div><div class="particle" style="left: 80.247vw; top: 21.2805vh; animation-duration: 6.98534s; opacity: 0.434755; height: 5.7091px; width: 5.7091px;"></div><div class="particle" style="left: 37.9573vw; top: 65.6875vh; animation-duration: 7.02757s; opacity: 0.359292; height: 5.32971px; width: 5.32971px;"></div><div class="particle" style="left: 4.4727vw; top: 75.9943vh; animation-duration: 11.5362s; opacity: 0.264899; height: 5.17px; width: 5.17px;"></div><div class="particle" style="left: 48.423vw; top: 35.173vh; animation-duration: 8.42909s; opacity: 0.325012; height: 3.66234px; width: 3.66234px;"></div><div class="particle" style="left: 91.9918vw; top: 7.94432vh; animation-duration: 11.1877s; opacity: 0.51798; height: 5.32703px; width: 5.32703px;"></div><div class="particle" style="left: 26.6572vw; top: 64.341vh; animation-duration: 10.7783s; opacity: 0.362759; height: 3.87692px; width: 3.87692px;"></div><div class="particle" style="left: 16.8118vw; top: 27.5703vh; animation-duration: 7.43584s; opacity: 0.547901; height: 3.40653px; width: 3.40653px;"></div><div class="particle" style="left: 78.6793vw; top: 2.28294vh; animation-duration: 8.86526s; opacity: 0.599165; height: 4.75565px; width: 4.75565px;"></div><div class="particle" style="left: 64.1303vw; top: 29.1434vh; animation-duration: 10.6491s; opacity: 0.521749; height: 5.00973px; width: 5.00973px;"></div><div class="particle" style="left: 14.8781vw; top: 64.45vh; animation-duration: 8.91055s; opacity: 0.416595; height: 3.73508px; width: 3.73508px;"></div><div class="particle" style="left: 42.931vw; top: 52.107vh; animation-duration: 8.25556s; opacity: 0.260573; height: 3.95377px; width: 3.95377px;"></div><div class="particle" style="left: 91.767vw; top: 87.8671vh; animation-duration: 7.90536s; opacity: 0.251481; height: 2.71406px; width: 2.71406px;"></div><div class="particle" style="left: 53.8202vw; top: 72.3423vh; animation-duration: 9.38077s; opacity: 0.463492; height: 3.64687px; width: 3.64687px;"></div><div class="particle" style="left: 69.9308vw; top: 25.9158vh; animation-duration: 10.7256s; opacity: 0.252091; height: 4.03654px; width: 4.03654px;"></div><div class="particle" style="left: 96.0214vw; top: 19.6596vh; animation-duration: 11.3823s; opacity: 0.62752; height: 3.62786px; width: 3.62786px;"></div><div class="particle" style="left: 17.6049vw; top: 31.0089vh; animation-duration: 9.38394s; opacity: 0.631681; height: 2.5742px; width: 2.5742px;"></div><div class="particle" style="left: 99.1745vw; top: 88.0161vh; animation-duration: 6.84946s; opacity: 0.361074; height: 3.42545px; width: 3.42545px;"></div><div class="particle" style="left: 69.8512vw; top: 32.879vh; animation-duration: 11.2583s; opacity: 0.597386; height: 4.14627px; width: 4.14627px;"></div><div class="particle" style="left: 36.6104vw; top: 59.839vh; animation-duration: 9.87976s; opacity: 0.283395; height: 4.39994px; width: 4.39994px;"></div><div class="particle" style="left: 39.3996vw; top: 79.7573vh; animation-duration: 9.57539s; opacity: 0.330372; height: 5.05923px; width: 5.05923px;"></div><div class="particle" style="left: 34.4414vw; top: 77.5219vh; animation-duration: 8.11311s; opacity: 0.345831; height: 4.25608px; width: 4.25608px;"></div><div class="particle" style="left: 66.5815vw; top: 35.6857vh; animation-duration: 7.68813s; opacity: 0.237866; height: 5.37198px; width: 5.37198px;"></div><div class="particle" style="left: 28.3284vw; top: 97.3337vh; animation-duration: 10.79s; opacity: 0.28188; height: 5.54797px; width: 5.54797px;"></div><div class="particle" style="left: 32.1851vw; top: 81.0181vh; animation-duration: 6.25331s; opacity: 0.200792; height: 5.85077px; width: 5.85077px;"></div><div class="particle" style="left: 4.37632vw; top: 27.8485vh; animation-duration: 6.02152s; opacity: 0.559414; height: 3.72407px; width: 3.72407px;"></div><div class="particle" style="left: 65.1604vw; top: 66.2656vh; animation-duration: 7.69208s; opacity: 0.672738; height: 2.20324px; width: 2.20324px;"></div></div>
 
-  <h1>
-    <span class="autosecure">Autosecure by </span>
-    <span class="maous">Maous</span>
-  </h1>
-  <p>Most feature-rich and reliable Autosecure on the market.</p>
+  <!-- Navbar -->
+  <nav class="floating-nav">
+    <a href="#" class="nav-link active">Home</a>
+    <a href="#" class="nav-link">Features</a>
+    <a href="#" class="nav-link">Buy</a>
+    <a href="#" class="nav-link">Community</a>
+    <a href="#" class="nav-link">Support</a>
+  </nav>
+
+  <!-- Centered Title -->
+  <div class="center-content">
+    <h1><span class="autosecure">Autosecure by </span><span class="maous">Maous</span></h1>
+    <p>Most feature-rich and reliable Autosecure on the market.</p>
+
+    <div class="btn-group">
+      <button class="btn primary">Buy</button>
+      <button class="btn secondary">Learn More</button>
+    </div>
+  </div>
 
   <footer>© 2025 Maous Lucifer. All rights reserved.</footer>
 
   <script>
     // Floating particles
-    const totalParticles = 40;
-    for (let i = 0; i < totalParticles; i++) {
+    const container = document.getElementById("particles");
+    const total = 60;
+    for (let i = 0; i < total; i++) {
       const p = document.createElement("div");
       p.classList.add("particle");
       p.style.left = Math.random() * 100 + "vw";
       p.style.top = Math.random() * 100 + "vh";
-      p.style.animationDuration = 8 + Math.random() * 4 + "s";
+      p.style.animationDuration = 6 + Math.random() * 6 + "s";
       p.style.opacity = Math.random() * 0.5 + 0.2;
-      document.body.appendChild(p);
+      p.style.width = p.style.height = 2 + Math.random() * 4 + "px";
+      container.appendChild(p);
     }
   </script>
-</body>
-</html>
+
+
+</body></html>
