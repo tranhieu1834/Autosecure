@@ -11,12 +11,10 @@
   --text:#fff; --text-sub:#bdbdbd; --check:#8ef2a7; --glass:rgba(255,255,255,0.03);
 }
 
-/* Global */
 *{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins","Segoe UI",sans-serif;}
 body{background:var(--bg);color:var(--text);scroll-behavior:smooth;overflow-x:hidden;}
 section{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;text-align:center;padding:80px 20px 60px;overflow:hidden;}
 
-/* MAIN */
 #main{
   background:radial-gradient(circle at top left,#0a0a0a,#000);
   display:flex; flex-direction:column; align-items:center; justify-content:center; padding-top:40px;
@@ -30,7 +28,6 @@ section{min-height:100vh;display:flex;flex-direction:column;align-items:center;j
 #main p{color:var(--text-sub);margin-top:1rem;}
 @keyframes glow{from{text-shadow:0 0 10px rgba(255,50,80,0.5);}to{text-shadow:0 0 30px rgba(255,70,100,0.7);}}
 
-/* LIGHTS + PARTICLES */
 .light{position:absolute;border-radius:50%;filter:blur(160px);opacity:0.2;animation:floatLight 10s ease-in-out infinite alternate;}
 .light.red{background:#ff0033;width:420px;height:420px;top:-80px;left:-100px;}
 .light.dark{background:#550011;width:480px;height:480px;bottom:-100px;right:-120px;animation-delay:3s;}
@@ -43,7 +40,6 @@ section{min-height:100vh;display:flex;flex-direction:column;align-items:center;j
 .aura{position:absolute;inset:0;z-index:-3;background:radial-gradient(circle at 50% 40%, rgba(255,0,40,0.08), transparent 70%);mix-blend-mode:lighten;animation:pulse 6s ease-in-out infinite alternate;}
 @keyframes pulse{from{opacity:0.05;transform:scale(1);}to{opacity:0.12;transform:scale(1.05);}}
 
-/* FEATURES */
 #features{
   background: linear-gradient(to bottom, #111 0%, #1c0c1a 50%, #111 100%);
 }
@@ -60,7 +56,6 @@ section{min-height:100vh;display:flex;flex-direction:column;align-items:center;j
 }
 #features.visible .features-wrap {opacity:1; transform:translateY(0);}
 
-/* Welcome Card */
 .welcome-card {
   background: linear-gradient(135deg, #ff1e56, #ff5577);
   border-radius: 16px;
@@ -117,12 +112,12 @@ section{min-height:100vh;display:flex;flex-direction:column;align-items:center;j
 .feature-list li {display:flex;gap:10px;align-items:flex-start;color:var(--text-sub);font-size:0.95rem;}
 .feature-list .tick {color:var(--check);}
 .main-buttons {
-  margin-top: 40px; /* cách h1/p */
+  margin-top: 40px; 
   display: flex;
   gap: 20px;
   justify-content: center;
   flex-wrap: wrap;
-  z-index: 10; /* tránh bị chèn bởi particle/light */
+  z-index: 10;
   position: relative;
 }
 
@@ -249,16 +244,17 @@ section{min-height:100vh;display:flex;flex-direction:column;align-items:center;j
 }
 
 .purchase-button, .view-features-link {
-  padding: 10px 18px;
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  justify-content: center;
-  transition: all 0.3s ease;
+  padding: 0;       
+  border-radius: 0;       
+  background: none;       
+  box-shadow: none;        
+  color: #ff5577;       
+  text-decoration: underline;
+  display: inline;   
+  font-weight: 600;         
+  gap: 0;          
+  justify-content: normal; 
+  align-items: normal;
 }
 
 .purchase-button {
@@ -270,14 +266,12 @@ section{min-height:100vh;display:flex;flex-direction:column;align-items:center;j
   box-shadow: 0 10px 24px rgba(255,30,86,0.4);
 }
 
-.view-features-link {
-  background: rgba(255,255,255,0.1);
-  color: #fff;
+.view-features-link:hover {
+  color: #ff4455;
+  background: none;
+  box-shadow: none;         
 }
 
-.view-features-link:hover {
-  background: rgba(255,255,255,0.15);
-}
 /* FOOTER */
 footer{padding:18px 0;text-align:center;color:#777;border-top:1px solid rgba(255,255,255,0.05);}
 </style>
@@ -457,7 +451,7 @@ footer{padding:18px 0;text-align:center;color:#777;border-top:1px solid rgba(255
         </ul>
         
         <div class="card-actions" style="display:flex; flex-direction:column; gap:12px;">
-            <a href="/features" class="view-features-link" style="color:#ff5577; text-decoration:underline; font-weight:600;">View All Features</a>
+            <a href="/features" style="color:#ff5577; text-decoration:underline; font-weight:600;">View All Features</a>
             <a href="https://secures.mysellauth.com/product/autosecure-key" target="_blank" class="purchase-button" style="display:flex; align-items:center; justify-content:center; gap:8px; padding:12px 24px; background:linear-gradient(90deg,#ff1e56,#ff5577); color:#fff; border-radius:8px; font-weight:600; text-decoration:none;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="9" cy="21" r="1"></circle>
