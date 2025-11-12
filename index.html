@@ -9,19 +9,15 @@
   --primary:#ff1e56; --secondary:#ff5577; --accent:#ff6677;
   --bg:#0a0a0a; --card:#1c0c1a; --border:rgba(255,60,100,0.12);
   --text:#fff; --text-sub:#bdbdbd; --check:#8ef2a7; --glass:rgba(255,255,255,0.03);
+  --card-bg: rgba(30,41,59,0.85);
+  --card-border: rgba(255,127,127,0.6);
+  --copy-btn-normal: #333;
+  --copy-btn-active: #3ba55c;
 }
 *{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins","Segoe UI",sans-serif;}
 body{background:var(--bg);color:var(--text);scroll-behavior:smooth;overflow-x:hidden;}
 section{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;text-align:center;padding:80px 20px 60px;overflow:hidden;}
-
-#main{
-  background:radial-gradient(circle at top left,#0a0a0a,#000);
-  display:flex; flex-direction:column; align-items:center; justify-content:center; padding-top:40px;
-}
-#main h1{font-size:3rem;font-weight:400;margin-top:20px;}
-#main .maous{background:linear-gradient(90deg,#ff3344,#ff6677,#ff3344);-webkit-background-clip:text;color:transparent;animation:glow 4s ease-in-out infinite alternate;}
-#main p{color:var(--text-sub);margin-top:1rem;}
-@keyframes glow{from{text-shadow:0 0 10px rgba(255,50,80,0.5);}to{text-shadow:0 0 30px rgba(255,70,100,0.7);}}
+a{text-decoration:none;}
 .light{position:absolute;border-radius:50%;filter:blur(160px);opacity:0.2;animation:floatLight 10s ease-in-out infinite alternate;}
 .light.red{background:#ff0033;width:420px;height:420px;top:-80px;left:-100px;}
 .light.dark{background:#550011;width:480px;height:480px;bottom:-100px;right:-120px;animation-delay:3s;}
@@ -31,17 +27,23 @@ section{min-height:100vh;display:flex;flex-direction:column;align-items:center;j
 @keyframes drift{from{transform:translateY(0);opacity:1;}to{transform:translateY(-120vh);opacity:0;}}
 .aura{position:absolute;inset:0;z-index:-3;background:radial-gradient(circle at 50% 40%, rgba(255,0,40,0.08), transparent 70%);mix-blend-mode:lighten;animation:pulse 6s ease-in-out infinite alternate;}
 @keyframes pulse{from{opacity:0.05;transform:scale(1);}to{opacity:0.12;transform:scale(1.05);}}
-
+#main{
+  background:radial-gradient(circle at top left,#0a0a0a,#000);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; padding-top:40px;
+}
+#main h1{font-size:3rem;font-weight:400;margin-top:20px;}
+#main .maous{background:linear-gradient(90deg,#ff3344,#ff6677,#ff3344);-webkit-background-clip:text;color:transparent;animation:glow 4s ease-in-out infinite alternate;}
+#main p{color:var(--text-sub);margin-top:1rem;}
+@keyframes glow{from{text-shadow:0 0 10px rgba(255,50,80,0.5);}to{text-shadow:0 0 30px rgba(255,70,100,0.7);}}
+.main-buttons{margin-top:40px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;z-index:10;position:relative;}
+.btn{padding:12px 28px;border-radius:8px;font-weight:600;color:#fff;transition:all 0.3s ease;box-shadow:0 6px 18px rgba(255,30,86,0.3);}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(255,30,86,0.4);}
+.buy-btn{background:linear-gradient(90deg,#ff9e1e,#ff5577);}
+.discord-btn{background:linear-gradient(90deg,#7289da,#99a9f5);}
+.btn.features-btn{background:linear-gradient(90deg,#ff1e56,#ff5577);}
 #features{background: linear-gradient(to bottom, #111 0%, #1c0c1a 50%, #111 100%);}
 .features-wrap{max-width:1200px;width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:40px;opacity:0;transform:translateY(60px);transition:all .8s ease;}
 #features.visible .features-wrap{opacity:1;transform:translateY(0);}
-.welcome-card{background:linear-gradient(135deg, #ff1e56, #ff5577);border-radius:16px;padding:30px 25px;margin-bottom:40px;box-shadow:0 16px 40px rgba(255,30,86,0.2);color:#fff;text-align:center;max-width:700px;width:90%;z-index:10;position:relative;opacity:0;transform:translateY(40px);transition:all 0.6s ease;}
-.welcome-card.visible{opacity:1;transform:translateY(0);}
-.welcome-card:hover{transform:translateY(-6px);}
-.welcome-card h1{font-size:2.2rem;margin-bottom:12px;}
-.welcome-card p{font-size:1rem;margin-bottom:16px;color:rgba(255,255,255,0.9);}
-.time-badge{display:inline-block;background:rgba(255,255,255,0.15);padding:6px 14px;border-radius:12px;font-size:0.9rem;font-weight:500;}
-
 .feature-box{background:var(--card);border-radius:14px;padding:18px;border:1px solid var(--border);display:flex;flex-direction:column;gap:12px;transition:all 0.6s ease;opacity:0;transform:translateY(40px) scale(0.98);}
 .feature-box.visible{opacity:1;transform:translateY(0) scale(1);}
 .feature-box:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(255,30,86,0.08);}
@@ -53,52 +55,70 @@ section{min-height:100vh;display:flex;flex-direction:column;align-items:center;j
 .feature-list{list-style:none;display:flex;flex-direction:column;gap:8px;padding-left:0;margin:0;}
 .feature-list li{display:flex;gap:10px;align-items:flex-start;color:var(--text-sub);font-size:0.95rem;}
 .feature-list .tick{color:var(--check);}
-.main-buttons{margin-top:40px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;z-index:10;position:relative;}
-.btn{padding:12px 28px;border-radius:8px;font-weight:600;text-decoration:none;color:#fff;background:linear-gradient(90deg,var(--primary),var(--secondary));transition:all 0.3s ease;box-shadow:0 6px 18px rgba(255,30,86,0.3);}
-.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(255,30,86,0.4);}
-.buy-btn{background:linear-gradient(90deg,#ff9e1e,#ff5577);}
-.discord-btn{background:linear-gradient(90deg,#7289da,#99a9f5);}
-#purchase{padding:80px 20px 60px;text-align:center;background:linear-gradient(to bottom,#0a0a0a 0%,#1c0c1a 100%);}
-#purchase .purchase-title{font-size:2.5rem;margin-bottom:12px;background:linear-gradient(90deg,#ff3344,#ff6677);-webkit-background-clip:text;color:transparent;}
-#purchase .purchase-subtitle{color:var(--text-sub);font-size:1rem;margin-bottom:40px;}
-.pricing-container{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;}
+#purchase{padding:80px 20px; text-align:center; background:#111;}
+.pricing-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 60px;
+}
 .pricing-card{background:var(--card);border-radius:16px;padding:28px 24px;width:320px;box-shadow:0 16px 40px rgba(255,30,86,0.08);display:flex;flex-direction:column;gap:18px;transition:transform 0.3s ease,box-shadow 0.3s ease;}
 .pricing-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(255,30,86,0.15);}
-.pricing-card h3{font-size:1.5rem;background:linear-gradient(90deg,#ff1e56,#ff6677);-webkit-background-clip:text;color:transparent;}
-.price{font-size:1.4rem;font-weight:600;color:#fff;}
-.price-amount{font-size:2rem;font-weight:700;margin-right:4px;}
-.price-period{font-size:1rem;color:var(--text-sub);}
-.features-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;}
-.features-list li{display:flex;align-items:center;gap:10px;color:var(--text-sub);font-size:0.95rem;}
-.features-list li svg{stroke:var(--check);flex-shrink:0;}
 .card-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:10px;}
-.purchase-button, .view-features-link{padding:10px 18px;border-radius:8px;font-weight:600;text-decoration:none;color:#fff;display:flex;align-items:center;gap:6px;justify-content:center;transition:all 0.3s ease;}
+.purchase-button,.view-features-link{padding:10px 18px;border-radius:8px;font-weight:600;color:#fff;display:flex;align-items:center;gap:6px;justify-content:center;transition:all 0.3s ease;}
 .purchase-button{background:linear-gradient(90deg,#ff1e56,#ff6677);}
 .purchase-button:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(255,30,86,0.4);}
 .view-features-link{background:rgba(255,255,255,0.1);color:#fff;}
 .view-features-link:hover{background:rgba(255,255,255,0.15);}
 footer{padding:18px 0;text-align:center;color:#777;border-top:1px solid rgba(255,255,255,0.05);}
+.main-container{max-width:2200px;margin:0 auto;padding:60px 20px;display:flex;flex-direction:column;align-items:center;gap:40px;}
+.discord-intro-box{position:relative;background:var(--card-bg);backdrop-filter:blur(20px) saturate(180%);border:2px solid var(--card-border);border-radius:20px;padding:10px 320px;text-align:center;box-shadow:0 0 20px rgba(255,85,119,0.2),0 0 40px rgba(255,85,119,0.15);display:flex;flex-direction:column;justify-content:center;align-items:center;max-width:1200px;min-height:180px;transition:all 0.3s ease;}
+.discord-intro-box:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 0 30px rgba(255,85,119,0.4),0 0 60px rgba(255,85,119,0.3);}
+.discord-intro-box h2{font-weight:500;font-size:2.2rem;color:#fff;margin:15px 0;}
+.discord-intro-box .discord-button{display:inline-block;margin-top:15px;padding:12px 28px;font-size:1rem;font-weight:600;color:#fff;border:2px solid rgba(255,127,127,0.7);border-radius:50px;background:rgba(255,127,127,0.1);transition:all 0.3s ease;box-shadow:0 0 10px rgba(255,85,119,0.2);}
+.discord-intro-box .discord-button:hover{background:rgba(255,127,127,0.2);box-shadow:0 0 20px rgba(255,85,119,0.4);}
+.communities-grid{display:flex;justify-content:center;flex-wrap:wrap;gap:30px;}
+.community-card{width:400px;max-width:90%;background:var(--card-bg);border:2px solid var(--card-border);border-radius:20px;padding:12px;display:flex;flex-direction:column;gap:10px;text-align:left;color:#fff;box-shadow:0 0 15px rgba(255,85,119,0.2),0 0 30px rgba(255,85,119,0.15);transition:all 0.3s ease;}
+.community-card:hover{box-shadow:0 0 25px rgba(255,85,119,0.4),0 0 50px rgba(255,85,119,0.3);transform:translateY(-3px);}
+.community-header{display:flex;gap:15px;align-items:center;}
+.guild-icon{width:60px;height:60px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;background:rgba(255,127,127,0.2);}
+.guild-icon img{width:100%;height:100%;object-fit:cover;}
+.guild-info h3{margin:0;font-size:1.2rem;font-weight:700;}
+.guild-stats{display:flex;gap:15px;margin-top:5px;font-size:0.9rem;color:#ffb3b3;}
+.invite-section{margin-top:10px;}
+.invite-link{display:flex;justify-content:space-between;align-items:center;background:rgba(255,127,127,0.1);border:2px solid var(--card-border);border-radius:12px;padding:10px 15px;}
+.invite-link div{display:flex;align-items:center;gap:8px;}
+.discord-icon{width:24px;height:24px;fill:#fff;}
+.invite-link span{font-size:0.95rem;font-weight:600;color:#fff;}
+.copy-btn{padding:6px 14px;border-radius:12px;border:2px solid var(--card-border);background:var(--copy-btn-normal);color:#fff;font-weight:600;cursor:pointer;transition:all 0.3s ease;}
+.copy-btn.copied{background:var(--copy-btn-active);border-color:var(--copy-btn-active);}
+.copy-btn:hover{box-shadow:0 0 15px rgba(255,85,119,0.4);}
+.invite-description{font-size:0.85rem;color:#ccc;margin-top:8px;border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:6px 10px;background:rgba(255,255,255,0.05);}
 </style>
 </head>
 <body>
+
+<!-- MAIN HERO -->
 <section id="main">
   <div class="light red"></div><div class="light dark"></div><div class="aura"></div><div class="particles" id="particles-main"></div>
   <h1><span class="autosecure">Autosecure by </span><span class="maous">Maous</span></h1>
   <p>Most feature-rich and reliable Autosecure on the market.</p>
   <div class="main-buttons">
-    <a href="#features" class="btn">Features</a>
+    <a href="#features" class="btn features-btn">Features</a>
     <a href="#purchase" class="btn buy-btn">Purchases</a>
     <a href="#discord" class="btn discord-btn">Discord</a>
   </div>
 </section>
 
+<!-- FEATURES -->
 <section id="features">
   <div class="aura"></div><div class="particles" id="particles-features"></div>
   <div class="welcome-card">
-    <div class="welcome-content">
+    <div class="discord-intro-box">
       <h1>Autosecure Features</h1>
       <p>The most comprehensive account security solution</p>
-      <div class="time-badge">Secures accounts in just 30-35 seconds</div>
+      <div class="discord-button">Secures accounts in just 30-35 seconds</div>
     </div>
   </div>
   <div class="features-wrap">
@@ -196,9 +216,15 @@ footer{padding:18px 0;text-align:center;color:#777;border-top:1px solid rgba(255
   </div>
 </section>
 
-<!-- PURCHASE SECTION -->
-<section id="purchase" style="padding:80px 20px; background:#111;">
-  <h2 style="text-align:center; color:#fff; margin-bottom:40px;">Purchase Options</h2>
+<!-- PURCHASE -->
+<section id="purchase">
+  <div class="aura"></div><div class="particles" id="particles-features"></div>
+  <div class="welcome-card">
+    <div class="discord-intro-box">
+      <h1>Purhcase Option</h1>
+      <div class="discord-button">Choose the perfect plan to secure your digital life</div>
+    </div>
+  </div>
   <div class="pricing-container">
     <div class="pricing-card" style="width:420px; padding:36px 30px;">
         <h2 style="margin-bottom:20px; color:#fff;">Autosecure</h2>
@@ -266,7 +292,75 @@ footer{padding:18px 0;text-align:center;color:#777;border-top:1px solid rgba(255
   </div>
 </section>
 
+
+<!-- DISCORD COMMUNITIES -->
+<section id="discord" class="main-container">
+  <div class="discord-intro-box">
+    <h2>Join Our Discord Communities</h2>
+    <div class="discord-button">Connect with us and join the discussion in our Discord servers.</div>
+  </div>
+  <div class="communities-grid">
+    <!-- Community Card 1 -->
+    <div class="community-card">
+      <div class="community-header">
+        <div class="guild-icon">
+          <img src="https://github.com/tranhieu1834/Autosecure/blob/main/autosecure.png?raw=true" alt="Autosecure Icon">
+        </div>
+        <div class="guild-info">
+          <h3>Autosecure</h3>
+          <div class="guild-stats"></div>
+        </div>
+      </div>
+      <div class="invite-section">
+        <div class="invite-link">
+          <div>
+            <svg class="discord-icon" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152..."></path></svg>
+            <span>discord.gg/RTPyrgQA</span>
+          </div>
+          <button class="copy-btn" onclick="copyToClipboard('discord.gg/RTPyrgQA', this)">Copy Link</button>
+        </div>
+        <p class="invite-description">Join our Autosecure Server for updates & support.</p>
+      </div>
+    </div>
+    <!-- Community Card 2 -->
+    <div class="community-card">
+      <div class="community-header">
+        <div class="guild-icon">
+          <img src="https://github.com/tranhieu1834/Autosecure/blob/main/autosecure.png?raw=true" alt="Autosecure Icon">
+        </div>
+        <div class="guild-info">
+          <h3>Autosecure Backup</h3>
+          <div class="guild-stats"></div>
+        </div>
+      </div>
+      <div class="invite-section">
+        <div class="invite-link">
+          <div>
+            <svg class="discord-icon" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152..."></path></svg>
+            <span>discord.gg/RTPyrgQA</span>
+          </div>
+          <button class="copy-btn" onclick="copyToClipboard('discord.gg/RTPyrgQA', this)">Copy Link</button>
+        </div>
+        <p class="invite-description">Backup Server for updates if main is down.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>© 2025 Maous Lucifer. All rights reserved.</footer>
+
+<script>
+function copyToClipboard(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
+    btn.innerText = "Copied!";
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.innerText = "Copy Link";
+      btn.classList.remove('copied');
+    }, 1500);
+  });
+}
+</script>
 
 <script>
 function createParticles(id,count){const c=document.getElementById(id);for(let i=0;i<count;i++){const p=document.createElement("div");p.classList.add("particle");p.style.left=Math.random()*100+"vw";p.style.top=Math.random()*100+"vh";p.style.width=p.style.height=2+Math.random()*4+"px";p.style.animationDuration=6+Math.random()*6+"s";p.style.opacity=Math.random()*0.5+0.2;c.appendChild(p);}}
